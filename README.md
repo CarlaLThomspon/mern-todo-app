@@ -2,6 +2,7 @@
 
 ## Medium Article ##
 (https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/)
+(https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-3/)
 
 ## Verify Node Version 
 
@@ -48,3 +49,6 @@ Install react router dom
 
 ### `npm install react-router-dom`
 
+Install axios  - Send GET/POST from frontend to backend
+
+### `npm install axios`
