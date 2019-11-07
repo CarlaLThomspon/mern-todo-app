@@ -20,7 +20,11 @@ export default class TodosList extends Component {
         this.state = {todos: []};
     }
 
+    _isMounted = false;
+
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('http://localhost:4000/todos/')
             .then(response => {
                 this.setState({todos: response.data});
@@ -28,6 +32,22 @@ export default class TodosList extends Component {
             .catch(function(error) {
                 console.log(error);
             })
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    componentDidUpdate() {
+
+        axios.get('http://localhost:4000/todos/')
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({ todos: res.data });
+                }
+            }).catch(error => {
+                console.log(error);
+            });
     }
 
     todoList() {

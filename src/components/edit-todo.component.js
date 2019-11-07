@@ -59,14 +59,17 @@ export default class EditTodo extends Component {
         });
     }
 
+    // Send updated Todo Object, in the component state, to Todos List
     onSubmit(e) {
         e.preventDefault();
+        // Define the obj to send to backend
         const obj = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible,
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
+        // POST Request to backend
         axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
