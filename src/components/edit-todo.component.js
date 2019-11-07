@@ -8,9 +8,9 @@ export default class EditTodo extends Component {
 
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
-        this.onChangeTodoPriority    = this.onChangeTodoPriority.bind(this);
-        this.onChangeTodoCompleted   = this.onChangeTodoCompleted.bind(this);
-        this.onSubmit                = this.onSubmit.bind(this);
+        this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+        this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             todo_description: '',
@@ -25,8 +25,8 @@ export default class EditTodo extends Component {
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
-                    todo_responsible: response.todo_responsible,
-                    todo_priority: response.todo_priority,
+                    todo_responsible: response.data.todo_responsible,
+                    todo_priority: response.data.todo_priority,
                     todo_completed: response.data.todo_completed
                 })
             })
@@ -61,7 +61,7 @@ export default class EditTodo extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const obj= {
+        const obj = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible,
             todo_priority: this.state.todo_priority,
@@ -70,7 +70,7 @@ export default class EditTodo extends Component {
         axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-        this.props.history.push('/')
+        this.props.history.push('/');
     }
 
     render() {
@@ -137,7 +137,7 @@ export default class EditTodo extends Component {
                                     checked={this.state.todo_completed}
                                     value={this.state.todo_completed}
                                     />
-                            <label className="form-check-label" htmoFor="completedCheckbox">
+                            <label className="form-check-label" htmlFor="completedCheckbox">
                                 Completed
                             </label>
                         </div>
