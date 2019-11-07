@@ -52,3 +52,7 @@ Install react router dom
 Install axios  - Send GET/POST from frontend to backend
 
 ### `npm install axios`
+
+Start MongoDB from the Command Line
+
+### `mongod --dbpath=/data`
